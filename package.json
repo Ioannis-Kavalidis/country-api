@@ -1,7 +1,7 @@
 {
   "name": "country-app-with-react",
   "version": "1.0.0",
-  "description": "country app in React",
+  "description": "country app with React",
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
@@ -9,7 +9,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "author": "Ioannis Kavalidis",
+  "author": "Ioannis-Kavalidis",
   "license": "ISC",
   "dependencies": {
     "autoprefixer": "^9.8.0",

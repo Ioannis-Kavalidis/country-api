@@ -1,48 +1,35 @@
-import React from "react";
-import Loading from "./components/Loading";
-import Country from "./components/Country";
-//import axios from "axios"; if you would like to use it
+import React, { Component } from "react";
+import "./App.css";
+import Form from "./components/Form";
+import Countries from "./components/Countries";
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      userInput: "",
-      loading: true,
-    };
-    this.handleChange = (e) => {
-      this.setState({
-        userInput: e.target.value.trim(),
-      });
-    };
-  }
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        loading: false,
-      });
-    }, 2000);
-  }
+class App extends Component {
+  state = {
+    countries: [],
+  };
 
-  // fetch result
-  // let { name, capital, topLevelDomain, timezones, languages } = item;
-  // this.setState({
-  //   name,
-  //   capital,
-  //   topLevelDomain,
-  //   timezones,
-  //   languages,
-  //   loading: false,
-  // });
-
+  getCountry = async (e) => {
+    const nameCountry = e.target.elements.nameCountry.value;
+    e.preventDefault();
+    const api_call = await fetch(
+      `https://restcountries.eu/rest/v2/name/${nameCountry}`
+    );
+    const data = await api_call.json();
+    this.setState({ countries: data });
+    console.log(this.state.countries);
+  };
   render() {
-    if (this.state.loading) return <Loading />;
     return (
-      <React.Fragment>
-        <h1>Country App</h1>
-
-        <Country data="sendSomething" />
-      </React.Fragment>
+      <div className="App">
+        <header className="App-header">
+          <h1 className="App-title">Country Search</h1>
+        </header>
+        <Form getCountry={this.getCountry} />
+        <br />
+        <Countries countries={this.state.countries} />
+      </div>
     );
   }
 }
+
+export default App;

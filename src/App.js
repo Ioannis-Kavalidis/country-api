@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
+import "./scss/main.scss";
 import Form from "./components/Form";
 import Countries from "./components/Countries";
 

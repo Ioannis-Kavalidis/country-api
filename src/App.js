@@ -1,7 +1,7 @@
 import React from "react";
 import Loading from "./components/Loading";
 import Country from "./components/Country";
-//import axios from "axios"; if you would like to use it 💪🏻
+//import axios from "axios"; if you would like to use it
 
 export default class App extends React.Component {
   constructor(props) {
